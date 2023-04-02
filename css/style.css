@@ -62,7 +62,7 @@ header{
 }
 
 #scroll-phone{
-    top: 60vh;
+    top: 45vh;
     position: relative !important;
     animation-name: desliza;
     animation-duration: 2s;
@@ -150,7 +150,7 @@ header{
     #poke-info{
         max-width: 95vw;
         border-radius: 3em !important;
-        max-height: 45vh;
+        max-height: 65vh !important;
         overflow-y: hidden;
         margin-bottom: 2em;
         overflow-y: hidden; 

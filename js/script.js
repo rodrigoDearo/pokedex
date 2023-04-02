@@ -107,7 +107,6 @@ telaDeScroll.addEventListener('scroll', function() { // REMOVE MENSAGEM DE SCROL
     if ((telaDeScroll.scrollTop > 50)&&(userAprend==false)) {
         document.getElementById('scroll-phone').remove();
         userAprend = true;
-        telaDeScroll.removeEventListener('scroll');
     }
 });
 
