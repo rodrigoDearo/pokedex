@@ -48,11 +48,11 @@ function criarNovoCampo(div_id, numExec, dados){
         let novoCampo = document.createElement('h3');
         if(div_id == "poke-type-value"){
             novoCampo.className = 'conteudo elementoCriadoType';
-            novoCampo.innerHTML = dados['types'][i]['type']['name'];
+            novoCampo.innerHTML = padronizarSintaxeDeString(dados['types'][i]['type']['name']);
         }else 
         if(div_id == "poke-hab-value"){
             novoCampo.className = 'conteudo elementoCriadoHab';
-            novoCampo.innerHTML = dados['abilities'][i]['ability']['name'];
+            novoCampo.innerHTML = padronizarSintaxeDeString(dados['abilities'][i]['ability']['name']);
         }
         document.getElementById(div_id).appendChild(novoCampo);
     }
