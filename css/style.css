@@ -1,3 +1,14 @@
+::-webkit-scrollbar {
+    height: 3px;
+    width: 8px; /* largura da barra de rolagem */
+  }
+  
+  /* Estiliza o polegar (thumb) da barra de rolagem */
+  ::-webkit-scrollbar-thumb {
+    background-color: #999; /* cor do polegar */
+    border-radius: 4px; /* borda arredondada do polegar */
+  }
+
 :root{
     --cor-secondary: #ececed;
 }
@@ -48,12 +59,13 @@ header{
 /* ESTILIZAÇÃO DO RETORNO DA BUSCA DO POKEMON PESQUISADO */ 
 #poke-info{
     justify-content: center;
-    margin-top: 2em;
+    margin-top: 1.75em;
     background-color: #012233;
-    border-radius: 5em 0em 0em 5em;
-    max-height: 85vh;
-    overflow: scroll;
+    border-radius: 5em;
+    max-height: 45vh;
+    overflow: hidden;
     overflow-x: hidden;
+    transition: 1s ease-in ;
 }
 
 .title{
@@ -62,6 +74,7 @@ header{
     padding: 0.5em;
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .subtitle{
@@ -71,7 +84,6 @@ header{
 }
 
 #poke-photo-value{
-    background-color: var(--cor-secondary);
     padding: 1em;
     border-radius: 1.25em;
     margin-bottom: 3.1818em;
@@ -88,10 +100,6 @@ header{
     padding-bottom: 2em;
 }
 
-h6{
-    display: flex;
-    justify-content: center;
-}
 
 /* AJUSTES DE RESPONSIVIDADE */
 
@@ -130,3 +138,16 @@ h6{
 
     }
   }
+
+  /* AJUSTE DE ANIMAÇÃO JS*/
+  #visible{
+    visibility: hidden;
+  }
+
+/* RODAPÉ */
+  h6{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+}
