@@ -1,6 +1,9 @@
 const url = "https://pokeapi.co/api/v2/pokemon/";
 
+var userAprend = false; //VARIAVEL CRIADA PARA DETECTAR SE USUARIO INTEPRETOU NECESSIDADE DE ROLAGEM
+
 // DEFINE CONSTANTES REFERENTE AOS SEU DETERMINADO ELEMENTO HTML
+const telaDeScroll = document.getElementById('poke-info');
 const fotoPokemon = document.getElementById('poke-photo-value');
 const nomePokemon = document.getElementById('poke-name-value');
 const habilidadesPokemon = document.getElementById('poke-hab-value');
@@ -21,20 +24,26 @@ function consultaPokemon(pokemon){  //FUNÇÃO RECEBE COMO PARAMETRO O POKEMON D
 }
 
 function tratativaDeErro(){ // DEFINE PADRÃO VISUAL CASO NÃO ENCONTRE O POKÉMON
+    fotoPokemon.src = 'img/pokeball.png';
     document.getElementById('poke-info').style.borderRadius = '5em'
     document.getElementById('poke-info').style.overflow = 'hidden';             
     document.getElementById('poke-info').style.maxHeight = '45vh';
     document.getElementById('visible').style.visibility = 'hidden';
     nomePokemon.innerHTML = 'Quem é esse Pokémon?';
-    fotoPokemon.src = 'img/pokeball.png';
     console.log('Erro, não foi obtido retorno para URL informada');
+    fotoPokemon.style.backgroundColor = 'transparent'; 
+    document.getElementById('scroll-phone').style.visibility = 'hidden';
 }
 
 // FUNÇÃO QUE EXIBE OS DADOS DO JSON E REALIZA MUNDAÇAS VISUAIS
 function ExtraiEexibeDadosRetornadosDaConsulta(dados){
-    document.getElementById('poke-info').style.borderRadius = '5em 0em 0em 5em'
+    if(userAprend==false){
+        document.getElementById('scroll-phone').style.visibility = 'visible';
+    }
+
+    document.getElementById('poke-info').style.borderRadius = '5em 0.5em 1em 5em'
     document.getElementById('poke-info').style.overflow = 'scroll';             
-    document.getElementById('poke-info').style.maxHeight = '85vh';
+    document.getElementById('poke-info').style.maxHeight = '75vh';
     document.getElementById('visible').style.visibility = 'visible';
     reiniciarCamposCriados();  //ZERA OS CAMPOS CRIADOS DINAMICAMENTE
     nomePokemon.innerHTML = padronizarSintaxeDeString(dados.name); //ESCREVE O NOME DO POKEMON
@@ -94,7 +103,14 @@ addEventListener('keypress', function(event) { //FUNÇÃO DE ATALHO PARA TECLA E
     }
   });
 
+telaDeScroll.addEventListener('scroll', function() { // REMOVE MENSAGEM DE SCROLL MOBILE
+    if ((telaDeScroll.scrollTop > 50)&&(userAprend==false)) {
+        document.getElementById('scroll-phone').remove();
+        userAprend = true;
+        telaDeScroll.removeEventListener('scroll');
+    }
+});
+
   /*
         CÓDIGO DESENVOLVIDO E COMENTADO POR RODRIGO DEARO
   */ 
-
